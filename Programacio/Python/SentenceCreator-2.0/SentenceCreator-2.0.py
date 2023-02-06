@@ -94,14 +94,14 @@ def sentence_creator(num_sent, dicc_chain, num_clave):
 #Clave inicial
 def initial_key_creator(num_clave):
         
-        start_array = []
-        while num_clave > 0:
+    start_array = []
+    while num_clave > 0:
         
-            start_array.append("<<START>>")
-            num_clave = num_clave - 1
+        start_array.append("<<START>>")
+        num_clave = num_clave - 1
         
-        start_key = array_a_string(start_array)
-        return start_key
+    start_key = array_a_string(start_array)
+    return start_key
                
 #Creador de claves
 def key_creator(num_clave, index, linesplit):
