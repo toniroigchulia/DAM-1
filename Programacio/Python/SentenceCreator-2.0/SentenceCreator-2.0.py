@@ -107,12 +107,13 @@ def key_creator(num_clave, index, linesplit):
 
     x = index
     z = num_clave
-    while z > 0:
+    y = True
+    while (z > 0) & (y == True):
 
         key.append("<<"+linesplit[x]+">>")
 
         if x == 0:
-            break
+            y = False
 
         z = z - 1
         x = x - 1
