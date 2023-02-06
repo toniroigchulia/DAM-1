@@ -21,42 +21,75 @@ def dicc_create(file, num_clave):
         
         for index in range (num_words):
             
-            words = []
-            index_clave = num_clave + index
-            while index_clave > index:
+            key = key_creator(num_clave, index, linesplit)
+            
+            if not key in dicc:
+            
                 try:
-                    words.append(linesplit[index_clave - 1])
+                    dicc[key] = [linesplit[index + 1]]
                 except:
-                    words.append("<<END>>")
-                index_clave = index_clave - 1
-            words.reverse()
-            print(words)
+                        dicc[key] = ["<<END>>"]
             
+            else:
             
-            if num_clave > index:
-            
-                if not key_creator(num_clave, index, words) in dicc:
+                x = dicc[key]
                 
-                    try:
-                        dicc[key_creator(num_clave, index, words)] = [linesplit[index]]
-                    except:
-                        pass
-                        
-                else:
-                    
-                    x = dicc[key_creator(num_clave, index, words)]
-                    try:
-                        x.append(linesplit[index])
-                    except:
-                        x.append("<<END>>")
-                    dicc[key_creator(num_clave, index, words)] = x
-
+                try:
+                    x.append(linesplit[index + 1])
+                except:
+                    x.append("<<END>>")
+                
+                dicc[key] = x
+            
     return dicc
         
 #Creador de frases
 def sentence_creator(num_sent, dicc_chain, num_clave):
 
     print("\n","=====Frases=====","\n")
+
+    sentence_dicc = {}
+    
+    while num_sent > 0:
+        
+        sentence = []
+        
+        
+        clave = initial_key_creator(num_clave).split()
+        
+        string_clave = array_a_string(clave)
+        next_word = (random.choice(dicc_chain[string_clave]))
+        sentence.append(next_word)
+        
+        x = True
+        while x == True:
+            
+            clave.append("<<"+next_word+">>")
+            clave.pop(0)
+            
+            string_clave = array_a_string(clave)
+            next_word = (random.choice(dicc_chain[string_clave]))
+            
+            if next_word == "<<END>>":
+            
+                x = False
+                
+            else:
+            
+                sentence.append(next_word)
+        
+        
+        string_sentence = array_a_string(sentence)
+        if not string_sentence in sentence_dicc:
+            
+            sentence_dicc[string_sentence] = [[]]
+            print(string_sentence)
+            
+        else:
+            pass
+        
+    
+        num_sent = num_sent - 1
 
 #Clave inicial
 def initial_key_creator(num_clave):
@@ -71,15 +104,29 @@ def initial_key_creator(num_clave):
         return start_key
                
 #Creador de claves
-def key_creator(num_clave, index, words):
+def key_creator(num_clave, index, linesplit):
+
     key = []
     
-    if (num_clave - 1) > index:
-        while (num_clave - 1) > 0:
-            key.append("<<Start>>")
-            num_clave =- 1
-        key.append("<<"+words[index]+">>")
+    x = index
+    z = num_clave
+    while z > 0:
         
+        key.append("<<"+linesplit[x]+">>")
+        
+        if x == 0:
+            break
+        
+        z = z - 1
+        x = x - 1
+    
+    index_clave = num_clave - (index + 1)
+    while index_clave > 0:
+            
+        key.append("<<START>>")
+        index_clave = index_clave - 1
+    
+    key.reverse()
     key = array_a_string(key)
     return key
 
@@ -96,7 +143,7 @@ def sentence_num_creation():
     x = True
     while x == True:
         try:
-            sentence_num_creation = int(input("Cuantas frases quieres generar? "))
+            sentence_num_creation = int(input("\n"+"Cuantas frases quieres generar? "))
             x = False
         except:
             print("\n","!!!!!Debes de ingresar un numero valido!!!!\n")
@@ -109,7 +156,7 @@ def num_clave_creation():
     x = True
     while x == True:
         try:
-            num_clave_creation = int(input("Que cantidad de palabras quieres usar como clave? "))
+            num_clave_creation = int(input("\n"+"Que cantidad de palabras quieres usar como clave? "))
             x = False
         except:
             print("\n","!!!!!Debes de ingresar un numero valido!!!!\n")
@@ -119,7 +166,7 @@ def num_clave_creation():
 #Elejir el archivo deseado
 def file_seleccion():
 
-    print("==Archivos disponibles==\n -star_wars.txt \n -frases_informatica.txt \n -sentence_list_432.txt \n")
+    print("==Archivos disponibles==\n -star_wars.txt \n -frases_informatica.txt \n")
     
     x = True
     while x == True:
@@ -130,9 +177,6 @@ def file_seleccion():
             x = False
         except:
             print("!!!El nombre del archivo no es correcto!!!","\n")
-    print("\n")
-            
-    
 
     return file
 
@@ -154,10 +198,10 @@ num_clave = num_clave_creation()
 
 chain = dicc_create(file_to_use, num_clave)
 
-#sentence_creator(num_sentences, chain, num_clave)
+
+sentence_creator(num_sentences, chain, num_clave)
 
 
-print(chain)
 
 print("\n")
 file_to_use.close()
