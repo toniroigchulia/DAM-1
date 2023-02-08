@@ -179,3 +179,28 @@ img {
     border-bottom: 1px solid #c5c5c5 
 }
 
+#noticias, #pie {
+    background-color: #f8f8f8;
+}
+
+#publicidad{
+    background-color: #FFF6cd;
+}
+
+#secundario h2{
+    background-color: #db905c;
+    padding: .2em;
+}
+
+#menu{
+    background-image: url(./imagenes/fondo_menu.gif);
+}
+
+#cabecera h1{
+    background-image: url(./imagenes/logo.gif);
+    background-position: center;
+}
+
+#cabecera h1 span{
+    visibility: hidden;
+}
