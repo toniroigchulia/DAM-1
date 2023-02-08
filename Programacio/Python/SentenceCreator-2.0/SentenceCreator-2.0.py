@@ -1,9 +1,7 @@
 import re
 import random
 
-### FUNCIONES###
-
-
+### FUNCIONES
 def dicc_create(file, num_clave):
 
     dicc = {}
@@ -186,7 +184,7 @@ def file_clear(file_to_clear):
     open("text.txt", 'w').write(my_file_cleared)
 
 
-### PROGRAMA PRINCIPAL###
+### PROGRAMA PRINCIPAL
 file_to_use = file_seleccion()
 
 num_sentences = sentence_num_creation()
