@@ -36,7 +36,7 @@ public class App {
                 
                 int index = 0;
                 for (int totalAlumnosHora : TotalAlumnosHora.getTotalAlumnosHora(horario)) {
-                    System.out.println((++index) + ".Hora: " + totalAlumnosHora);
+                    System.out.println((++index) + ".Horas: " + totalAlumnosHora);
                 }
                 
                 System.out.print("\n"+"--Inserte el Numero de la opcion deseada: ");
