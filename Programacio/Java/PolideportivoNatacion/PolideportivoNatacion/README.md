@@ -1,18 +1,15 @@
-## Getting Started
+<h2><strong>Requisitos funcionales del proyecto</strong></h2>
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+• Generar un horario de la semana.
 
-## Folder Structure
+• Mostrar el total de alumnos por día. 
 
-The workspace contains two folders by default, where:
+• Mostrar el total de alumnos por hora. 
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+• Mostrar la media de alumnos por clase. 
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+• Buscar que a que classes y dias hay un numero determinado de alumnos.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+<h2><strong>Detalles del proyecto</strong></h2>
 
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Para realizar el programa he hecho que cada uno de los puntos anteriores fuera una classe del programa. La aplicacion esta separada en el hilo principal que se encuentra en el archivo de App donde se encuentra tanto el Menu y un bucle para pedir al usuario que quiere hacer y dependiendo del input del usuario se llaman a las otras classes para realizar la funcion especifica de cada una. 

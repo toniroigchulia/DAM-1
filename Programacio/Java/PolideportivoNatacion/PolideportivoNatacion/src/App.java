@@ -11,11 +11,12 @@ public class App {
         
         Menu(horario, dias);
         System.out.print("\n"+"--Inserte el Numero de la opcion deseada: ");
-        int opcionSeleccionada;
         Scanner sc = new Scanner(System.in);
+        int opcionSeleccionada = 0;
         
         do {
-            opcionSeleccionada = sc.nextInt();
+            
+            opcionSeleccionada = sc.nextInt();   
 
             if (opcionSeleccionada == 1) {
                 horario = Horario.getHorario(dias);
@@ -61,6 +62,9 @@ public class App {
                 }
                 
                 System.out.print("\n"+"--Inserte el Numero de la opcion deseada: ");
+            } else {
+                System.out.println("\n"+"!!!El numero insertado no pertenece a ninguna opcion.");
+                System.out.print("--Inserte el Numero de la opcion deseada: ");
             }
         } while (opcionSeleccionada != 6);
 
@@ -83,6 +87,5 @@ public class App {
         System.out.println("4. Mostrar la media de alumnos por clase.");
         System.out.println("5. Mostrar numero determinado alumnos.");
         System.out.println("6. Cerrar el programa."+"\n");
-
     }
 }
