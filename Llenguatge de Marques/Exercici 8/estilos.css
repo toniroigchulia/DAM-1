@@ -1,0 +1,13 @@
+a:link {
+    color: red;
+}
+
+
+a:visited {
+    color: #ccc;
+}
+
+a:hover {
+    color: #FFF;
+    background-color: #cc0000;
+}
