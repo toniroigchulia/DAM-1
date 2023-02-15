@@ -89,4 +89,31 @@ FROM Pieces
 WHERE EXISTS (SELECT Piece
                 FROM Provides
                 WHERE Provider = 'HAL');
+                
+--6
+SELECT PIECES.Name, Providers.Name, Provides.PRICE
+FROM PROVIDES
+INNER JOIN PIECES
+ON PROVIDES.PIECE = PIECES.CODE
+INNER JOIN PROVIDERS
+ON Provides.PROVIDER = PROVIDERS.CODE
+WHERE PROVIDES.PIECE = (SELECT PIECE
+                        FROM PROVIDES
+                        WHERE PRICE = Max(Price));
 
+--7
+INSERT INTO Provides(Piece, Provider, Price) 
+VALUES(1,'TNBC',7);
+
+--8
+UPDATE PROVIDES
+SET Price = Price + 1;
+
+--9
+DELETE FROM Provides
+WHERE Provider = 'RBT' AND PIECE = 4;
+
+--10
+UPDATE PROVIDES
+SET Price = NULL, PIECE = NULL
+WHERE Provider = 'RBT';

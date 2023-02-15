@@ -1,0 +1,38 @@
+nav{
+    position: fixed;
+    margin:0;
+    padding:0;
+    font-size:0;
+}
+
+nav a{
+      text-decoration:none;
+      color:inherit;
+      font-size:14px;
+}
+            
+nav li{
+      display:inline-block;
+      width:150px;
+      height:30px;
+      padding:5px 10px;
+      background-color:#000;
+      border:1px solid #818181;
+      text-align:center;
+      color:#fff;
+      position:relative;
+}
+            
+nav li:hover{
+      background-color:#fff;
+      color:#000;
+}
+            
+nav li>ul{
+      display:none;
+}
+
+nav li:hover>ul{
+      display:block;
+      position:absolute;
+}
