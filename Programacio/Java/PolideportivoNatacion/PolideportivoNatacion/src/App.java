@@ -12,7 +12,7 @@ public class App {
         Menu(horario, dias);
         System.out.print("\n"+"--Inserte el Numero de la opcion deseada: ");
         Scanner sc = new Scanner(System.in);
-        int opcionSeleccionada = 0;
+        int opcionSeleccionada;
         
         do {
             
