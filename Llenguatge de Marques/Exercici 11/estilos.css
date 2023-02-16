@@ -3,6 +3,7 @@ nav{
     margin:0;
     padding:0;
     font-size:0;
+    position:relative;
 }
 
 nav a{
@@ -20,7 +21,6 @@ nav li{
       border:1px solid #818181;
       text-align:center;
       color:#fff;
-      position:relative;
 }
             
 nav li:hover{
@@ -30,9 +30,9 @@ nav li:hover{
             
 nav li>ul{
       display:none;
+      position: absolute;
 }
 
 nav li:hover>ul{
-      display:block;
-      position:absolute;
+      display: list-item;
 }
