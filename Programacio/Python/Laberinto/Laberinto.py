@@ -1,10 +1,10 @@
 from colorama import init, Back, Fore
 import os
 import time
-init(autoreset=True)
+init(autoreset = True)
 
 ##Funciones
-def print_maze(maze, maze_exit):
+def print_maze(maze):
     os.system("cls")
     print("\n")
             
@@ -12,7 +12,7 @@ def print_maze(maze, maze_exit):
         for y in range(len(maze[0])):
         
             if maze[x][y] == " w ":
-                print(Fore.RED + maze[x][y], end = " ")
+                print(Back.RED + maze[x][y] + Fore.RESET + Back.RESET, end = " ")
                 
             elif maze[x][y] == " c ":
                 print(Fore.GREEN + maze[x][y], end = " ")
@@ -62,7 +62,7 @@ def exit_position(maze):
             else:
                 pass
 
-def explore(actual_position):
+def explore(actual_position, start):
 #Buscamos la salida
     #Arriba
     try:
@@ -96,7 +96,6 @@ def explore(actual_position):
     except:
         pass
 
-
 #Si no hay salida nos movemos a un camino inexplorado
     #Arriba
     try:
@@ -129,47 +128,61 @@ def explore(actual_position):
             return pos
     except:
         pass
-
-#Si no hay camino inexplorado volvemos atras y marcamos el camino como sin salida
-    #Arriba
-    try:
-        if maze[actual_position[0] - 1][actual_position[1]] == " v ":
-            pos = [actual_position[0] - 1, actual_position[1]]
-            maze[actual_position[0]][actual_position[1]] = " n "
-            return pos
-    except:
-        pass
-        
-    #Derecha
-    try:
-        if maze[actual_position[0]][actual_position[1] + 1] == " v ":
-            pos = [actual_position[0], actual_position[1] + 1]
-            maze[actual_position[0]][actual_position[1]] = " n "
-            return pos
-    except:
-        pass
-        
-    #Abajo
-    try:
-        if maze[actual_position[0] + 1][actual_position[1]] == " v ":
-            pos = [actual_position[0] + 1, actual_position[1]]
-            maze[actual_position[0]][actual_position[1]] = " n "
-            return pos
-    except:
-        pass
     
     
-    #Izquierda
-    try:
-        if maze[actual_position[0]][actual_position[1] - 1] == " v ":
-            pos = [actual_position[0], actual_position[1] - 1]
-            maze[actual_position[0]][actual_position[1]] = " n "
-            return pos
-    except:
-        pass
+    maze[actual_position[0]][actual_position[1]] = " n "
+    for x in range (len(maze)):
+        for y in range(len(maze[0])):
+            
+            if maze[x][y] == " v ":
+                
+                maze[x][y] = " c "
+                
+            else:
+                pass
+    
+    
+    return start
+
+# #Si no hay camino inexplorado volvemos atras y marcamos el camino como sin salida
+#     #Arriba
+#     try:
+#         if maze[actual_position[0] - 1][actual_position[1]] == " v ":
+#             pos = [actual_position[0] - 1, actual_position[1]]
+#             maze[actual_position[0]][actual_position[1]] = " n "
+#             return pos
+#     except:
+#         pass
         
-
-
+#     #Derecha
+#     try:
+#         if maze[actual_position[0]][actual_position[1] + 1] == " v ":
+#             pos = [actual_position[0], actual_position[1] + 1]
+#             maze[actual_position[0]][actual_position[1]] = " n "
+#             return pos
+#     except:
+#         pass
+        
+#     #Abajo
+#     try:
+#         if maze[actual_position[0] + 1][actual_position[1]] == " v ":
+#             pos = [actual_position[0] + 1, actual_position[1]]
+#             maze[actual_position[0]][actual_position[1]] = " n "
+#             return pos
+#     except:
+#         pass
+    
+    
+#     #Izquierda
+#     try:
+#         if maze[actual_position[0]][actual_position[1] - 1] == " v ":
+#             pos = [actual_position[0], actual_position[1] - 1]
+#             maze[actual_position[0]][actual_position[1]] = " n "
+#             return pos
+#     except:
+#         pass
+        
+        
 ##Laberinto
 maze = [[" w ", " S ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w "],
         [" w ", " c ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " c ", " w ", " w "],
@@ -181,26 +194,26 @@ maze = [[" w ", " S ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", "
         [" w ", " w ", " c ", " w ", " w ", " c ", " w ", " c ", " w ", " w ", " w ", " w "],
         [" w ", " w ", " c ", " w ", " w ", " c ", " w ", " c ", " c ", " c ", " w ", " w "],
         [" w ", " c ", " c ", " w ", " w ", " c ", " w ", " w ", " w ", " c ", " w ", " w "],
-        [" w ", " w ", " c ", " c ", " c ", " c ", " c ", " c ", " c ", " c ", " w ", " w "],
+        [" w ", " w ", " c ", " c ", " c ", " c ", " c ", " w ", " w ", " c ", " w ", " w "],
         [" w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w "]]
 
 
 ##Main
 maze_exit = exit_position(maze)
 
-actual_position = start_position(maze)
+start = start_position(maze)
+
+actual_position = start
 
 exit = False
 while exit == False:
-      
-    time.sleep(0.1)
-    
+
     if maze[actual_position[0]][actual_position[1]] == " S ":
         pass
     else:
         maze[actual_position[0]][actual_position[1]] = " v "
         
-    actual_position = explore(actual_position)
+    actual_position = explore(actual_position, start)
     maze[actual_position[0]][actual_position[1]] = " A "
 
     if actual_position == maze_exit:
@@ -208,5 +221,6 @@ while exit == False:
     else:
         pass
     
-    print_maze(maze, maze_exit)
+    maze[start[0]][start[1]] = " S "
+    print_maze(maze)
 
