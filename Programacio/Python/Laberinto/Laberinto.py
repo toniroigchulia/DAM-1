@@ -4,6 +4,7 @@ init(autoreset=True)
 
 ##Funciones
 def print_maze(maze):
+    os.system("cls")
     print("\n")
             
     for x in range (len(maze)):
@@ -137,11 +138,12 @@ maze = [[" w ", " S ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " c ", "
         [" w ", " c ", " w ", " c ", " w ", " c ", " w ", " w ", " c ", " w ", " w "],
         [" w ", " c ", " w ", " c ", " w ", " c ", " w ", " c ", " c ", " c ", " c "],
         [" w ", " c ", " w ", " c ", " c ", " c ", " w ", " c ", " w ", " w ", " c "],
-        [" c ", " c ", " c ", " c ", " c ", " c ", " w ", " c ", " w ", " c ", " c "],
-        [" w ", " w ", " c ", " c ", " w ", " c ", " w ", " c ", " w ", " w ", " w "],
-        [" w ", " w ", " c ", " w ", " w ", " c ", " w ", " c ", " c ", " c ", " w "],
+        [" E ", " c ", " c ", " c ", " w ", " c ", " w ", " c ", " w ", " c ", " c "],
+        [" w ", " w ", " w ", " c ", " w ", " c ", " w ", " c ", " w ", " w ", " w "],
+        [" w ", " w ", " c ", " c ", " w ", " c ", " w ", " c ", " c ", " c ", " w "],
         [" w ", " c ", " c ", " w ", " w ", " c ", " w ", " w ", " w ", " c ", " w "],
-        [" w ", " w ", " w ", " w ", " c ", " c ", " c ", " c ", " w ", " E ", " w "]]
+        [" w ", " w ", " w ", " w ", " c ", " c ", " c ", " c ", " w ", " c ", " w "],
+        [" w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w "],]
 
 ##Main
 maze_exit = exit_position(maze)
@@ -155,7 +157,7 @@ while exit == False:
     actual_position = move(actual_position)
     print_maze(maze)
     
-    user_input = int(input("a: "))
+    user_input = int(input())
     
     if user_input == 1:
         exit = True
