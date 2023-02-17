@@ -409,8 +409,6 @@ actual_position = start_position(maze)
 exit = False
 while exit == False:
     
-    time.sleep(0.1)
-    
     if maze[actual_position[0]][actual_position[1]] == " S ":
         pass
     else:
