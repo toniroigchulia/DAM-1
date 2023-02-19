@@ -245,6 +245,8 @@ movimientos_realizados = []
 exit = False
 while exit == False:
     
+    time.sleep(0.2)
+    
     maze[actual_position[0]][actual_position[1]] = " v "
 
     actual_position = explore(actual_position, maze_start, explore_fast)
