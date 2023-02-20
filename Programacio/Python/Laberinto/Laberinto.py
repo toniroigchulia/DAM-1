@@ -68,6 +68,7 @@ def explore(actual_position, start, explore_type):
     try:
         if maze[actual_position[0] - 1][actual_position[1]] == " E ":
             pos = [actual_position[0] - 1, actual_position[1]]
+            camino_salida.append([actual_position[0], actual_position[1]])
             return pos       
     except:
         pass
@@ -76,6 +77,7 @@ def explore(actual_position, start, explore_type):
     try:
         if maze[actual_position[0]][actual_position[1] + 1] == " E ":
             pos = [actual_position[0], actual_position[1] + 1]
+            camino_salida.append([actual_position[0], actual_position[1]])
             return pos        
     except:
         pass
@@ -84,6 +86,7 @@ def explore(actual_position, start, explore_type):
     try:
         if maze[actual_position[0] + 1][actual_position[1]] == " E ":
             pos = [actual_position[0] + 1, actual_position[1]]
+            camino_salida.append([actual_position[0], actual_position[1]])
             return pos
     except:
         pass
@@ -92,6 +95,7 @@ def explore(actual_position, start, explore_type):
     try:
         if maze[actual_position[0]][actual_position[1] - 1] == " E ":
             pos = [actual_position[0], actual_position[1] - 1]
+            camino_salida.append([actual_position[0], actual_position[1]])
             return pos
     except:
         pass
@@ -101,6 +105,7 @@ def explore(actual_position, start, explore_type):
     try:
         if maze[actual_position[0] - 1][actual_position[1]] == " c ":
             pos = [actual_position[0] - 1, actual_position[1]]
+            camino_salida.append([actual_position[0], actual_position[1]])
             return pos       
     except:
         pass
@@ -109,6 +114,7 @@ def explore(actual_position, start, explore_type):
     try:
         if maze[actual_position[0]][actual_position[1] + 1] == " c ":
             pos = [actual_position[0], actual_position[1] + 1]
+            camino_salida.append([actual_position[0], actual_position[1]])
             return pos        
     except:
         pass
@@ -117,6 +123,7 @@ def explore(actual_position, start, explore_type):
     try:
         if maze[actual_position[0] + 1][actual_position[1]] == " c ":
             pos = [actual_position[0] + 1, actual_position[1]]
+            camino_salida.append([actual_position[0], actual_position[1]])
             return pos
     except:
         pass
@@ -125,10 +132,11 @@ def explore(actual_position, start, explore_type):
     try:
         if maze[actual_position[0]][actual_position[1] - 1] == " c ":
             pos = [actual_position[0], actual_position[1] - 1]
+            camino_salida.append([actual_position[0], actual_position[1]])
             return pos
     except:
         pass
-  
+    
     if explore_type == False:
         
         maze[actual_position[0]][actual_position[1]] = " n "
@@ -152,6 +160,7 @@ def explore(actual_position, start, explore_type):
         if maze[actual_position[0] - 1][actual_position[1]] == " v ":
             pos = [actual_position[0] - 1, actual_position[1]]
             maze[actual_position[0]][actual_position[1]] = " n "
+            camino_salida.pop(-1)
             return pos
     except:
         pass
@@ -161,6 +170,7 @@ def explore(actual_position, start, explore_type):
         if maze[actual_position[0]][actual_position[1] + 1] == " v ":
             pos = [actual_position[0], actual_position[1] + 1]
             maze[actual_position[0]][actual_position[1]] = " n "
+            camino_salida.pop(-1)
             return pos
     except:
         pass
@@ -170,6 +180,7 @@ def explore(actual_position, start, explore_type):
         if maze[actual_position[0] + 1][actual_position[1]] == " v ":
             pos = [actual_position[0] + 1, actual_position[1]]
             maze[actual_position[0]][actual_position[1]] = " n "
+            camino_salida.pop(-1)
             return pos
     except:
         pass
@@ -180,6 +191,7 @@ def explore(actual_position, start, explore_type):
         if maze[actual_position[0]][actual_position[1] - 1] == " v ":
             pos = [actual_position[0], actual_position[1] - 1]
             maze[actual_position[0]][actual_position[1]] = " n "
+            camino_salida.pop(-1)
             return pos
     except:
         pass
@@ -196,7 +208,7 @@ def explore(actual_position, start, explore_type):
     else:
         pass
         
-        
+      
 ##Laberinto
 maze = [[" w ", " S ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w "],
         [" w ", " c ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " c ", " w ", " w "],
@@ -212,34 +224,46 @@ maze = [[" w ", " S ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", "
         [" w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w "]]
 
 
-##Main
+###Main
 
 ##Init variables
+#Salida Laberinto
 maze_exit = exit_position(maze)
 
+#Entrada laberinto
 maze_start = start_position(maze)
 actual_position = maze_start
 
+#Tipo de exploracion
 explore_fast = True
 
+#Movimientos realizados
+camino_salida = []
+movimientos_realizados = []
 
 ##Bucle Principal
 exit = False
 while exit == False:
-    
+
     maze[actual_position[0]][actual_position[1]] = " v "
 
     actual_position = explore(actual_position, maze_start, explore_fast)
     
-    if actual_position == False:
-        explore_fast = actual_position
-        actual_position = start_position(maze)
+    if actual_position == maze_start:
+        camino_salida = []
     else:
         pass
     
-    
+    if actual_position == False:
+        explore_fast = actual_position
+        actual_position = start_position(maze)
+        movimientos_realizados = []
+    else:
+        pass
+          
     maze[actual_position[0]][actual_position[1]] = " A "
-
+    
+    movimientos_realizados.append([actual_position[0], actual_position[1]])
 
     if actual_position == maze_exit:
         exit = True
@@ -249,3 +273,7 @@ while exit == False:
     maze[maze_start[0]][maze_start[1]] = " S "
     maze[maze_exit[0]][maze_exit[1]] = " E "
     print_maze(maze)
+
+print_maze(maze)
+print("\n"+"Movimientos realizados para encontrar la salida: "+"\n",movimientos_realizados)
+print("\n"+"Camino a la salida: "+"\n",camino_salida)
