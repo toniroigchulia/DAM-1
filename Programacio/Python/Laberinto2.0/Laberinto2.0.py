@@ -1,6 +1,4 @@
 from colorama import init, Back, Fore
-import os
-import time
 init(autoreset = True)
 
 ##Funciones
@@ -63,59 +61,46 @@ def exit_position(maze):
 
 def explore(actual_position):
     
-    look = [" E ", " c "]
-    
-
-    for x in look:
-            
-        move = search(actual_position, x)
-        
-
-    return move
-            
-def search(actual_position, search_for):
-    
+    #Posiciones para comprobar
     look = [[1,0],
             [0,1],
             [-1,0],
             [0,-1]]
- 
-    for x in range (len(look)):
-            
-        if maze[actual_position[0] + (look[x][0])][actual_position[1] + (look[x][1])] == search_for:
-            pos = [actual_position[0] + (look[x][0]), actual_position[1] + (look[x][1])]
-            camino_salida.append(pos)
-            return pos  
-        else: pass
     
-    if search_for == " c ":
-        maze[actual_position[0]][actual_position[1]] = " n "
-        pos = camino_salida[-1]
-        camino_salida.pop(-1)
-        return pos
-    else: 
-        
-        pos = actual_position
-        return pos
+    #Casillas para buscar
+    search_for = [" E ", " c "] 
     
+    #Usando las dos arrays anteriores se busca en las casillas cercanas y si se encuentra una casilla valida nos movemos a ella
+    for y in search_for:
+        for x in range (len(look)):
+                
+            if maze[actual_position[0] + (look[x][0])][actual_position[1] + (look[x][1])] == y:
+                pos = [actual_position[0] + (look[x][0]), actual_position[1] + (look[x][1])]
+                camino_salida.append(pos)
+                return pos  
+            else: pass
+    
+    #Si no se encuentra ninguna casilla valida volvemos hacia atras
+    maze[actual_position[0]][actual_position[1]] = " n "
+    camino_salida.pop(-1)
+    pos = camino_salida[-1]
+    return pos
 
 ##Laberinto
 maze = [[" w ", " S ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w "],
         [" w ", " c ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " c ", " w ", " w "],
         [" w ", " c ", " w ", " c ", " w ", " c ", " c ", " c ", " c ", " c ", " w ", " w "],
-        [" w ", " c ", " w ", " c ", " w ", " c ", " w ", " w ", " c ", " w ", " w ", " w "],
-        [" w ", " c ", " c ", " c ", " w ", " c ", " w ", " c ", " c ", " c ", " c ", " w "],
-        [" w ", " w ", " c ", " c ", " c ", " c ", " w ", " c ", " w ", " w ", " c ", " w "],
-        [" E ", " c ", " c ", " w ", " c ", " c ", " w ", " c ", " w ", " c ", " c ", " w "],
+        [" w ", " c ", " w ", " c ", " w ", " c ", " c ", " c ", " c ", " w ", " w ", " w "],
+        [" w ", " c ", " c ", " c ", " w ", " c ", " c ", " c ", " c ", " c ", " c ", " w "],
+        [" w ", " w ", " c ", " c ", " c ", " c ", " c ", " c ", " w ", " w ", " c ", " w "],
+        [" E ", " c ", " c ", " w ", " c ", " c ", " c ", " c ", " w ", " c ", " c ", " w "],
         [" w ", " w ", " c ", " w ", " w ", " c ", " w ", " c ", " w ", " w ", " w ", " w "],
         [" w ", " w ", " c ", " w ", " w ", " c ", " w ", " c ", " c ", " c ", " w ", " w "],
-        [" w ", " c ", " c ", " w ", " w ", " c ", " w ", " w ", " w ", " c ", " w ", " w "],
-        [" w ", " w ", " c ", " c ", " c ", " c ", " c ", " c ", " c ", " c ", " w ", " w "],
+        [" w ", " c ", " c ", " w ", " w ", " c ", " w ", " w ", " w ", " c ", " c ", " w "],
+        [" w ", " w ", " c ", " c ", " c ", " c ", " c ", " c ", " c ", " w ", " c ", " w "],
         [" w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w "]]
 
-
 ###Main
-
 ##Init variables
 #Salida Laberinto
 maze_exit = exit_position(maze)
@@ -129,24 +114,23 @@ camino_salida = []
 movimientos_realizados = []
 
 ##Bucle Principal
-print(maze_exit)
-print(maze_start)
-print(actual_position)
-print_maze(maze)
 exit = False
 while not exit:
     
-    if not maze[actual_position[0]][actual_position[1]] == " S ":
+    if not maze[actual_position[0]][actual_position[1]] == " S " or maze[actual_position[0]][actual_position[1]] == " E ":
         maze[actual_position[0]][actual_position[1]] = " v "
     else: pass
     
     actual_position = explore(actual_position)
     
-    maze[actual_position[0]][actual_position[1]] = " A "
+    movimientos_realizados.append(actual_position)
     
-    exit = bool(input("."))
-    print_maze(maze)
-    print(camino_salida)
+    if actual_position == maze_exit:
+        exit = True
+    else:
+        pass
 
+    
+print_maze(maze)
 print("\n"+"Movimientos realizados para encontrar la salida: "+"\n",movimientos_realizados)
 print("\n"+"Camino a la salida: "+"\n",camino_salida)
