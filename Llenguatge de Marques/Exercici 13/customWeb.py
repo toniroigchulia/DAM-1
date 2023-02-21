@@ -8,7 +8,7 @@ jugadores = []
 puntuacion = []
 
 #Añadir informacion a las listas
-num_jugadores = int(input("\n","Cuantos jugadores quieres añadir? "))
+num_jugadores = int(input("Cuantos jugadores quieres añadir? "))
 while num_jugadores > 0:
   os.system("cls")
   
@@ -24,6 +24,19 @@ while num_jugadores > 0:
   print("\n")
   
   num_jugadores -= 1
+
+orden_jugadores = str(input("De que forma quieres ordenar la array? [ASC/DESC]: "))
+
+if orden_jugadores == "DESC":
+  
+  jugadores.sort()
+
+elif orden_jugadores == "ASC":
+
+  jugadores.sort()
+  jugadores.reverse()
+  
+else: pass
 
 #Abrimos los documentos para editarlos
 html_file = open("web.html", "w")
@@ -45,7 +58,6 @@ html = """
 
   <table>
     <tr>
-      <th>Posicion</th>
       <th>Jugador</th>
       <th>Puntos</th>
     </tr>
@@ -56,7 +68,6 @@ for x in range(len(jugadores)):
 
   html += f"""
       <tr>
-        <td>{(x+1)}</td>
         <td>{jugadores[x]}</td>
         <td>{puntuacion[x]}</td>
       </tr>
@@ -79,7 +90,7 @@ table {{
   }}
   
   table td, table th {{
-    border: 1px solid #ddd;
+    border: 1px solid black;
     padding: 8px;
   }}
   
