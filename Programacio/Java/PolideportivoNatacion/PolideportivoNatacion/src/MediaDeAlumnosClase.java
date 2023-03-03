@@ -10,7 +10,7 @@ public class MediaDeAlumnosClase {
         ArrayList<Integer> totalAlumnosHoras = TotalAlumnosHora.getTotalAlumnosHora(horario);
         ArrayList<Double> mediaAlumnosHoras = new ArrayList<>();
     
-        //Por cada valo de totalAlumnosHoras aplicamos la formula para sacar la media y guardarla en la array de mediaAlumnosHora
+        //Por cada valor de totalAlumnosHoras aplicamos la formula para sacar la media y guardarla en la array de mediaAlumnosHora
         for(double totalAlumnosHora : totalAlumnosHoras){
             mediaAlumnosHoras.add(totalAlumnosHora/totalAlumnosHoras.size());
         }

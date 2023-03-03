@@ -9,7 +9,7 @@ public class NumeroDeterminadoAlumnos {
         //Generamos una array donde guardar los resultados
         ArrayList<Integer> horaNumeroDeterminadoAlumnos = new ArrayList<>();
         
-        //Usamos un blucle para movernos por tod el diccionario
+        //Usamos un blucle para movernos por todo el diccionario
         int index = 0;
         for(int num: horario.get(dia)){
         

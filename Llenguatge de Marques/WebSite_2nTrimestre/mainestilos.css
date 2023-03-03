@@ -1,0 +1,18 @@
+#menu nav li>ul {
+    display: none;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    right: 0%;
+    top: 100%;
+}
+
+#menu nav li:hover>ul{
+    display: block;
+}
+
+#menu nav ul>li{
+    display: inline-flex;
+    position: relative;
+}
+
