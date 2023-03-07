@@ -60,6 +60,8 @@ public class App {
         
             System.out.println("El numero: " + num1 + " y el numero:" + num2 + " NO SON AMGIOS.");
         
-        }        
+        }    
+        
+        input.close();
     }  
 }
