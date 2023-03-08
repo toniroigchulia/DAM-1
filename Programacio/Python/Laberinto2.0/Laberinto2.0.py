@@ -75,25 +75,25 @@ def explore(actual_position):
         for x in range (len(look)):
                 
             if maze[actual_position[0] + (look[x][0])][actual_position[1] + (look[x][1])] == y:
-                pos = [actual_position[0] + (look[x][0]), actual_position[1] + (look[x][1])]
-                camino_salida.append(pos)
-                return pos  
+                next_pos = [actual_position[0] + (look[x][0]), actual_position[1] + (look[x][1])]
+                camino_salida.append(next_pos)
+                return next_pos  
             else: pass
     
     #Si no se encuentra ninguna casilla valida volvemos hacia atras
     maze[actual_position[0]][actual_position[1]] = " n "
     camino_salida.pop(-1)
-    pos = camino_salida[-1]
-    return pos
+    next_pos = camino_salida[-1]
+    return next_pos
 
 ##Laberinto
 maze = [[" w ", " S ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " w "],
         [" w ", " c ", " w ", " w ", " w ", " w ", " w ", " w ", " w ", " c ", " w ", " w "],
         [" w ", " c ", " w ", " c ", " w ", " c ", " c ", " c ", " c ", " c ", " w ", " w "],
-        [" w ", " c ", " w ", " c ", " w ", " c ", " c ", " c ", " c ", " w ", " w ", " w "],
-        [" w ", " c ", " c ", " c ", " w ", " c ", " c ", " c ", " c ", " c ", " c ", " w "],
+        [" w ", " c ", " w ", " c ", " w ", " c ", " c ", " w ", " c ", " w ", " w ", " w "],
+        [" w ", " c ", " c ", " c ", " w ", " c ", " w ", " c ", " c ", " c ", " c ", " w "],
         [" w ", " w ", " c ", " c ", " c ", " c ", " c ", " c ", " w ", " w ", " c ", " w "],
-        [" E ", " c ", " c ", " w ", " c ", " c ", " c ", " c ", " w ", " c ", " c ", " w "],
+        [" w ", " c ", " c ", " w ", " c ", " c ", " c ", " c ", " w ", " c ", " c ", " E "],
         [" w ", " w ", " c ", " w ", " w ", " c ", " w ", " c ", " w ", " w ", " w ", " w "],
         [" w ", " w ", " c ", " w ", " w ", " c ", " w ", " c ", " c ", " c ", " w ", " w "],
         [" w ", " c ", " c ", " w ", " w ", " c ", " w ", " w ", " w ", " c ", " c ", " w "],
