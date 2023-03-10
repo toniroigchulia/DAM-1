@@ -61,17 +61,19 @@ body{
 
 .menu a{
     text-decoration: none;
+    
     color:white;
+    
     font-family: "Game Boy";
     font-size: 1em;
+    
     background-color: black;
+    
+    padding: 0.1em;
+    border: 0.01em solid white;
 }
 
     /*Submenu*/
-.menu .menu-item:hover{
-    background: rgba(48, 48, 48, 0.603);
-}
-
 .menu .menu-item:hover a{
     background: rgba(48, 48, 48, 0.603);
 }
@@ -101,6 +103,8 @@ body{
 }
 
 .menu .menu-item .sub-menu a{
+    border: none;
+    
     background-color: black;
 }
 
@@ -170,12 +174,29 @@ body{
     margin: 0.5em;
 }
 
+.main-content .main-content-1 .main-content-1-image img{
+    vertical-align: baseline;
+    border:0.1em rgb(255, 255, 255) solid;
+}
+
+.main-content .main-content-2 .main-content-2-image img{
+    border:0.1em rgb(255, 255, 255) solid;
+}
+
 .main-content .main-content-1 .main-content-1-image{
     margin: 0.5em;
-    border:0.1em rgb(255, 255, 255) solid;
 }
 
 .main-content .main-content-2 .main-content-2-image{
     margin: 0.5em;
-    border:0.1em rgb(255, 255, 255) solid;
+}
+
+@media(max-width: 1100px){
+    .main-content .main-content-1 .main-content-1-image{
+        display: none;
+    }
+    
+    .main-content .main-content-2 .main-content-2-image{
+        display: none;
+    }  
 }
