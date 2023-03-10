@@ -1,0 +1,24 @@
+@font-face {
+    font-family: "Game Boy";
+    src: url(./font/Early\ GameBoy.ttf);
+}
+
+
+.main .main-content article{
+    padding: 1em;
+    padding-top: 0.5em;
+    text-align: justify;
+}
+
+.main .main-content header{
+    font-family: "Game Boy";
+    font-size: 0.7em;
+    
+    text-decoration: underline;
+    
+    
+    padding: 1em;
+    padding-bottom: 0em;
+    
+    text-align: left;
+}

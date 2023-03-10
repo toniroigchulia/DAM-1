@@ -125,7 +125,7 @@ body{
     background: rgba(48, 48, 48, 0.603);
 }
 
-@media(max-width: 600px){
+@media(max-width: 450px){
     .menu{
         column-gap: 0;
         padding-inline-start: 0;
