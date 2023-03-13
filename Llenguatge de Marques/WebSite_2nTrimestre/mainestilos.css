@@ -1,8 +1,10 @@
+/* Font */
 @font-face {
   font-family: "Game Boy";
   src: url(./font/Early\ GameBoy.ttf);
 }
 
+/* Estilos del cuerpo principal */
 body {
   margin: 0;
   padding: 0;
@@ -36,7 +38,7 @@ body {
   background-position: center;
 }
 
-/* Titulo */
+/* Menu Titulo */
 .menu .menu-titulo {
   display: flex;
   justify-content: center;
@@ -50,7 +52,7 @@ body {
   text-align: center;
 }
 
-/* Contenido */
+/* Menu Contenido */
 .menu .menu-item {
   position: relative;
   padding: 1em;
@@ -111,6 +113,7 @@ body {
 .menu .menu-item .sub-menu a:hover {
   background: rgba(48, 48, 48, 0.767);
 }
+
 
 /* Main content */
 .main-content {
