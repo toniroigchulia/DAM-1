@@ -1,202 +1,173 @@
 @font-face {
-    font-family: "Game Boy";
-    src: url(./font/Early\ GameBoy.ttf);
+  font-family: "Game Boy";
+  src: url(./font/Early\ GameBoy.ttf);
 }
 
-body{
-    margin: 0;
-    padding: 0;
-    
-    background-image: url(./images/background-tetris.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
+body {
+  margin: 0;
+  padding: 0;
 
+  background-image: url(./images/background-tetris.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+}
 
 /* Menu */
 .menu {
-    display: flex;
-    flex-direction: row;
-    
-    position: sticky;
-    top: 0;
-        
-    flex-wrap: wrap;
-    
-    column-gap: 15em;
-    justify-content: center;
-    
-    border-bottom: 0.1em solid white;
-    
-    padding-inline-start: 5em;
-    padding-inline-end: 5em;
-    
-    background-image: url(./images/spaceinvaders.png);
-    background-position: center;
+  display: flex;
+  flex-direction: row;
+
+  position: sticky;
+  top: 0;
+
+  flex-wrap: wrap;
+
+  column-gap: 15em;
+  justify-content: center;
+
+  border-bottom: 0.1em solid white;
+
+  padding-inline-start: 5em;
+  padding-inline-end: 5em;
+
+  background-image: url(./images/spaceinvaders.png);
+  background-position: center;
 }
 
-
-    /* Titulo */
+/* Titulo */
 .menu .menu-titulo {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin: 1.6em;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 1.6em;
 }
 
-.menu .menu-titulo a{
-    font-family: "Game Boy";
-    font-size: 2em;
-    text-align: center;
+.menu .menu-titulo a {
+  font-family: "Game Boy";
+  font-size: 2em;
+  text-align: center;
 }
 
-    /* Contenido */
+/* Contenido */
 .menu .menu-item {
-    position: relative;
-    padding: 1em;
-    
-    border-radius: 0.2em;
+  position: relative;
+  padding: 1em;
+
+  border-radius: 0.2em;
 }
 
-.menu a{
-    text-decoration: none;
-    
-    color:white;
-    
-    font-family: "Game Boy";
-    font-size: 1em;
-    
-    background-color: black;
-    
-    padding: 0.1em;
-    border: 0.01em solid white;
+.menu a {
+  text-decoration: none;
+
+  color: white;
+
+  font-family: "Game Boy";
+  font-size: 1em;
+
+  background-color: black;
+
+  padding: 0.1em;
+  border: 0.01em solid white;
 }
 
-    /*Submenu*/
-.menu .menu-item:hover a{
-    background: rgba(48, 48, 48, 0.603);
+/*Submenu*/
+.menu .menu-item:hover a {
+  background: rgba(48, 48, 48, 0.603);
 }
 
-.menu .menu-item:hover .sub-menu{
-    display: flex;
-    flex-direction: column;
-    
+.menu .menu-item:hover .sub-menu {
+  display: flex;
+  flex-direction: column;
 }
 
-.menu .menu-item .sub-menu{
-    display: none;
-    position: absolute;
-    
-    top: 100%;
-    left: 0%;
-    
-    z-index: 2;
-    
-    border-bottom-right-radius: 0.25em;
-    border-bottom-left-radius: 0.25em;
-    
-    white-space: nowrap;
-    
-    background-color: rgb(0, 0, 0);
-    border: 0.1em solid white;
+.menu .menu-item .sub-menu {
+  display: none;
+  position: absolute;
+
+  top: 100%;
+  left: 0%;
+  z-index: 2;
+
+  border-bottom-right-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
+
+  white-space: nowrap;
+
+  background-color: rgb(0, 0, 0);
+  border: 0.1em solid white;
 }
 
-.menu .menu-item .sub-menu a{
-    border: none;
-    
-    background-color: black;
+.menu .menu-item .sub-menu a {
+  border: none;
+
+  background-color: black;
+  padding: 0.4em;
+  border-top: 0.1em solid white;
 }
 
-        /* Items Submenu */
-.menu .menu-item .sub-menu span{
-    padding: 0.4em;
-    border-top: 0.1em solid white;
-}
-
-
-.menu .menu-item .sub-menu span:hover{
-
-    background: rgba(48, 48, 48, 0.603);
-}
-
-.menu .menu-item span:hover a{
-
-    background: rgba(48, 48, 48, 0.603);
-}
-
-@media(max-width: 450px){
-    .menu{
-        column-gap: 0;
-        padding-inline-start: 0;
-        padding-inline-end: 0;
-        
-        justify-items: center; 
-    }     
+/* Items Submenu */
+.menu .menu-item .sub-menu a:hover {
+  background: rgba(48, 48, 48, 0.767);
 }
 
 /* Main content */
-.main-content{
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    
-    margin: auto;
-    margin-block-start: 2em;
-    
-    color: white;
-    font-family: monospace;
-    font-size: 1.5em;
-    
-    border:0.1em rgb(255, 255, 255) solid;
-    background-color: rgba(48, 48, 48, 0.603);
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+
+  margin: auto;
+  margin-block-start: 2em;
+
+  color: white;
+  font-family: monospace;
+  font-size: 1.5em;
+
+  border: 0.1em rgb(255, 255, 255) solid;
+  background-color: rgba(48, 48, 48, 0.603);
 }
 
-.main-content .main-content-1{
-    display: flex;
-    text-align: justify;
-    
-    padding: 1em;
+.main-content .sub-content {
+  display: flex;
+  text-align: justify;
+
+  padding: 1em;
 }
 
-.main-content .main-content-2 {
-    display: flex;
-    text-align: justify;
-
-    padding: 1em;
+.main-content .sub-content .sub-content-text {
+  margin: 0.5em;
 }
 
-.main-content .main-content-1 .main-content-1-texto{
-    margin: 0.5em;
+.main-content .sub-content img {
+  margin-bottom: 0.2em;
+  border: 0.1em white solid;
+
+  max-width: 30%;
+  height: auto;
 }
 
-.main-content .main-content-2 .main-content-2-texto{
-    margin: 0.5em;
+.right {
+  margin-left: 1em;
+  float: right;
 }
 
-.main-content .main-content-1 .main-content-1-image img{
-    vertical-align: baseline;
-    border:0.1em rgb(255, 255, 255) solid;
+.left {
+  margin-right: 1em;
+  float: left;
 }
 
-.main-content .main-content-2 .main-content-2-image img{
-    border:0.1em rgb(255, 255, 255) solid;
-}
+@media (max-width: 900px) {
+  .menu {
+    column-gap: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
 
-.main-content .main-content-1 .main-content-1-image{
-    margin: 0.5em;
-}
+    justify-items: center;
+  }
 
-.main-content .main-content-2 .main-content-2-image{
-    margin: 0.5em;
-}
-
-@media(max-width: 1100px){
-    .main-content .main-content-1 .main-content-1-image{
-        display: none;
-    }
-    
-    .main-content .main-content-2 .main-content-2-image{
-        display: none;
-    }  
+  .main-content {
+    width: 97%;
+  }
 }

@@ -1,0 +1,202 @@
+@font-face {
+  font-family: "Game Boy";
+  src: url(./font/Early\ GameBoy.ttf);
+}
+
+@keyframes ImagenPopUp {
+  0% {margin-top: -20em;}
+  100% {margin-bottom: 0;}
+}
+
+.main{
+  display: flex;
+  
+  flex-direction: row;
+  column-gap: 6em;
+}
+
+.main .main-content{
+  margin: 0;
+}
+
+/* Menu Lateral */
+.cajamenulateral{
+  height: min-content;
+  position: sticky;
+  
+  top: 0;
+}
+
+.titulo{
+  border: 0.1em white solid;
+  
+  text-decoration: none;
+  font-family: "Game Boy";
+  color: white;
+}
+
+.cajamenulateral:hover .menulateral{
+  display: flex;
+}
+
+.menulateral {
+  display: none;
+  flex-grow: 0;
+  flex-direction: column;
+
+  background-position: center;
+}
+
+/* Contenido */
+.menulateral .menu-item {
+  width: 100%;
+  
+  padding: 0;
+  border-radius: 0.2em;
+}
+
+.menulateral a {
+  text-decoration: none;
+  display: block;
+  
+  color: white;
+
+  font-family: "Game Boy";
+  font-size: 1em;
+  
+  background-color: black;
+
+  padding: 0.1em;
+  border: 0.01em solid white;
+}
+
+/*Submenu*/
+.menulateral .menu-item:hover a {
+  background: rgba(48, 48, 48, 0.603);
+}
+
+.menulateral .menu-item:hover .sub-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.menulateral .menu-item .sub-menu {
+  display: none;
+  
+
+  border-bottom-right-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
+
+  white-space: nowrap;
+
+  background-color: rgb(0, 0, 0);
+  border: 0.1em solid white;
+}
+
+.menulateral .menu-item .sub-menu a {
+  border: none;
+
+  background-color: rgb(88, 88, 88);
+  padding: 0.4em;
+  border-top: 0.1em solid white;
+}
+
+/* Items Submenu */
+.menulateral .menu-item .sub-menu a:hover {
+  background: rgba(48, 48, 48, 0.5);
+}
+
+
+.menulateral .menu{
+  display: flex;
+  flex-direction: column;
+  
+  
+  color: white;
+  font-family: monospace;
+  font-size: 1.5em;
+}
+
+/* Galeria Principal */
+.galeria {
+  display: grid;
+  
+  gap: 0.6em;
+  
+  overflow-y: hidden;
+  
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+  margin-inline: 0.8em;
+  
+  justify-content: space-evenly;
+  justify-items: center;
+}
+
+@media (min-width: 768px) {
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .galeria {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .galeria {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1440px) {
+  .galeria {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 1600px) {
+  .galeria {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+header {
+  border-bottom: 0.1em white solid;
+  margin: 0.5em;
+  font-family: "Game Boy";
+}
+
+.image-container img {
+  height: 75%;
+}
+
+.image-container {
+  width: 225px;
+  height: 300px;
+  
+  
+  animation-name: ImagenPopUp;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  
+  border: 0.1em white solid;
+  background-color: rgba(46, 46, 46, 0.753);
+}
+
+/* Mini Galeria */
+.minigaleria{
+  margin: 0.8em;
+}
+
+.minigaleria img{
+  float: left;
+  
+  width: 150px;
+  height: 150px;
+  margin: 0.2em;
+  
+  border: 1px white solid;
+}

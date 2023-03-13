@@ -1,24 +1,58 @@
 @font-face {
-    font-family: "Game Boy";
-    src: url(./font/Early\ GameBoy.ttf);
+  font-family: "Game Boy";
+  src: url(./font/Early\ GameBoy.ttf);
 }
 
-
-.main .main-content article{
-    padding: 1em;
-    padding-top: 0.5em;
-    text-align: justify;
+/* Contenido Principal */
+.main .main-content article {
+  padding: 1em;
+  padding-top: 0.5em;
+  text-align: justify;
 }
 
-.main .main-content header{
-    font-family: "Game Boy";
-    font-size: 0.7em;
-    
-    text-decoration: underline;
-    
-    
-    padding: 1em;
-    padding-bottom: 0em;
-    
-    text-align: left;
+.main .main-content header {
+  font-family: "Game Boy";
+  font-size: 0.7em;
+
+  text-decoration: underline;
+
+  padding: 1em;
+  padding-bottom: 0em;
+
+  text-align: left;
+}
+
+/* Tabla */
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+.tabla {
+  margin: 1em;
+  background-color: rgba(128, 128, 128, 0.4);
+
+  overflow-x: auto;
+}
+
+.tabla .ventas {
+  width: 100%;
+}
+
+.tabla .ventas tr th {
+  font-family: "Game Boy";
+  background-image: url(./images/spaceinvaders.png);
+}
+
+.tabla .ventas .subtitulos {
+  font-size: 0.7em;
+}
+
+.tabla .ventas tr:nth-child(even) {
+  background-color: rgba(128, 128, 128, 0.726);
+}
+
+.tabla .ventas tr:hover {
+  background-color: rgba(32, 32, 32, 0.904);
 }
