@@ -1,3 +1,4 @@
+/* Animacioon Formulario */
 *{box-sizing:border-box;}
 @keyframes animation{
     0%   {opacity: 0;}
@@ -7,14 +8,13 @@
     100% {opacity: 1;}
 }
 
-.formulario {
-    display: flex;
-    flex-direction: column;
-    
-    width: 30%;
-    margin: 0 auto;
+/* Font */
+@font-face {
+	font-family: "Game Boy";
+	src: url(./font/Early\ GameBoy.ttf);
 }
 
+/* Formulario Responsive */
 @media (max-width: 600px){
 	.formulario{
 		width: 95%;
@@ -27,6 +27,15 @@
 	}
 }
 
+/* Estilos */
+.formulario {
+	display: flex;
+	flex-direction: column;
+	
+	width: 30%;
+	margin: 0 auto;
+}
+
 form{
 	padding:16px;
 	
@@ -37,10 +46,13 @@ form{
 	margin-left: 1em;
 	margin-right: 1em;
 	
-	background-color:#ccc;
+	background-image: url(./images/spaceinvaders.png);
 	
     animation-name: animation;
     animation-duration: 2s;
+    
+    font-size: 0.85em;
+    font-family: "Game Boy";
 }
 
 .form-group label{
@@ -73,6 +85,7 @@ form input[type="submit"]{
 	border-radius:5px;
 	display:block;
 	color:#fff;
+	border: 1px white solid;
 	background-color:#000;
 } 
 
@@ -84,6 +97,7 @@ form input[type="reset"]{
 	border-radius:5px;
 	display:block;
 	color:#fff;
+	border: 1px white solid;
 	background-color:#5b5b5b;
 } 
 

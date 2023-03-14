@@ -1,13 +1,16 @@
+/* Font */
 @font-face {
   font-family: "Game Boy";
   src: url(./font/Early\ GameBoy.ttf);
 }
 
+/* Animacion */
 @keyframes ImagenPopUp {
   0% {margin-top: -20em;}
   100% {margin-bottom: 0;}
 }
 
+/* Estilos contenido principal */
 .main{
   display: flex;
   
