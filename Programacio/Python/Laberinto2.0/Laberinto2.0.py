@@ -129,6 +129,8 @@ while not exit:
         exit = True
     else:
         pass
+        
+    print_maze(maze)
 
     
 print_maze(maze)
