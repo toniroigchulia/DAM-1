@@ -11,12 +11,13 @@ public class App {
         while(!end){
             System.out.println("\n"+"Que vols fer?");
             System.out.println("1. Introduir persona");
-            System.out.println("2. Sortir"+"\n");
+            System.out.println("2. Mostrar taula");
+            System.out.println("3. Sortir"+"\n");
             
             String opcio = sc.nextLine();
             
             if (opcio.equals("1")){
-            
+                
                 System.out.println("Nom persona: ");
                 persona.setNom(sc.nextLine());
                 
@@ -26,7 +27,7 @@ public class App {
                 
                 Bbdd.insertPersona(persona);
                 
-            } else if (opcio.equals("2")){
+            } else if (opcio.equals("3")){
             
                 end = true;
             
