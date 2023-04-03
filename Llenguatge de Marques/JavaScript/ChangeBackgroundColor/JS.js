@@ -1,4 +1,4 @@
-var lastColor = "black"
+var lastColor = "white";
 
 function changeBackgroundColor(){
 
