@@ -1,3 +1,5 @@
+import time
+import os
 from colorama import init, Back, Fore
 init(autoreset = True)
 
@@ -120,6 +122,10 @@ while not exit:
     if not maze[actual_position[0]][actual_position[1]] == " S " or maze[actual_position[0]][actual_position[1]] == " E ":
         maze[actual_position[0]][actual_position[1]] = " v "
     else: pass
+    
+    
+    time.sleep(0.2)
+    os.system("cls")
     
     actual_position = explore(actual_position)
     

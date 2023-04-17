@@ -22,7 +22,7 @@ speed(0)
 penup()
 goto(-300, 200)
 pendown()
-level = 3
+level = 7
 size = 300
     
 sierpinski(level, size)
