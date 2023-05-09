@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\Toni\Documents\1r DAM\ProjecteFinalEntorns\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1865706807.index
+1722729454.index
+3867353229.index
+2599842870.index
+2341345352.index
+1472336506.index

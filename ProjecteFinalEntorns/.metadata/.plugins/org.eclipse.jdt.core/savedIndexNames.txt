@@ -1,0 +1,4 @@
+INDEX VERSION 1.132+C:\Users\Toni\Documents\1r DAM\ProjecteFinalEntorns\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+3959137331.index
+2599842870.index
