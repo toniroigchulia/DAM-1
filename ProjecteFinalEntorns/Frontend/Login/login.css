@@ -50,7 +50,7 @@ form{
 	background-color:#ababab;
 }
 
-form input[type="submit"]{
+form button{
 	width:100%;
 	padding:8px 16px;
 	margin-top:32px;
@@ -61,6 +61,6 @@ form input[type="submit"]{
 	background-color:#000;
 } 
 
-form input[type="submit"]:hover{
+form button:hover{
 	cursor:pointer;
 }
