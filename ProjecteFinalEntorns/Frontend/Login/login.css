@@ -1,14 +1,10 @@
-.titulo{
-    display: block;
-}
-
 .formulario {
 	display: flex;
 	flex-direction: column;
 	
 	width: 25%;
 	margin: 0 auto;
-	background-color: #e3e3e3;
+	background-color: #abababc8;
 	border-radius: 8px;
 }
 
