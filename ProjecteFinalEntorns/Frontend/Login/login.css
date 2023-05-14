@@ -4,7 +4,7 @@
 	
 	width: 25%;
 	margin: 0 auto;
-	background-color: #abababc8;
+	background-color: #ffffff;
 	border-radius: 8px;
 }
 
@@ -49,6 +49,14 @@ form{
 .form-group .form-control:hover{
 	background-color:#ababab;
 }
+
+form input{
+
+	border: 0;
+	border-bottom: 2px solid black;
+	
+}
+
 
 form button{
 	width:100%;

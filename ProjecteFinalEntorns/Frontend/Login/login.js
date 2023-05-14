@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function send(){
     var ehttp = new XMLHttpRequest();
     
-    ehttp.open("POST", "http://172.16.138.129:3000/OperationDam/Suma", true);
+    ehttp.open("POST", "http://localhost:8080/EntornsBackend/LoginServlet", true);
     ehttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    ehttp.send("a="+document.getElementById("num1").value+"&b="+document.getElementById("num2").value);
+    ehttp.send("");
     
     ehttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
