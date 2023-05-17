@@ -15,9 +15,6 @@ function send(){
     
     ehttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("num1").value = "";
-            document.getElementById("num2").value = "";
-            document.getElementById("resultado").innerHTML = ehttp.responseText;
         }
     };
 };    

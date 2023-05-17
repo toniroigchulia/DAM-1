@@ -20,7 +20,7 @@ form{
 	border-radius:10px;
 	
 	margin-top: 3em;
-	margin-bottom: 3em;
+	margin-bottom: 4em;
 	margin-left: 1em;
 	margin-right: 1em;
 	  
@@ -32,11 +32,11 @@ form{
 	font-weight:bold;
 	display:inline-block;
 	
-	margin-bottom: 0.5em;
+	margin-bottom: 0.7em;
 }
 
 .form-group{
-	margin-bottom: 1em;
+	margin-bottom: 3em;
 }
 
 .form-group .form-control{
@@ -44,10 +44,6 @@ form{
 	width: 95%;
 	padding: 0.375em 0.75em;
 	background-color: white;
-}
-
-.form-group .form-control:hover{
-	background-color:#ababab;
 }
 
 form input{
@@ -60,7 +56,7 @@ form input{
 
 form button{
 	width:100%;
-	padding:8px 16px;
+	padding:0.75em;
 	margin-top:32px;
 	border:1px solid #000;
 	border-radius:5px;

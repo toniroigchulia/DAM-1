@@ -1,0 +1,69 @@
+.main {
+
+    margin: 3em
+    
+}
+
+.botones{
+
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.botones button {
+  
+  width: 20%;
+  margin-left: 5em;
+  margin-right: 5em;
+	padding:8px 16px;
+	border:1px solid #000;
+	border-radius:5px;
+	color:#fff;
+	background-color:#000;
+
+}
+
+.botones button:hover{
+	cursor:pointer;
+}
+
+
+/* Tabla */
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+.tabla {
+  background-color: rgba(255, 255, 255, 0.752);
+
+  overflow-x: auto;
+}
+
+.tabla .titulo_tabla{
+  background-color: white;
+}
+
+.tabla .gestio {
+  width: 100%;
+}
+
+.tabla .gestio .subtitulos {
+  background-color: white;
+  font-size: 0.7em;
+}
+
+.tabla .gestio tr:hover {
+  background-color: rgba(121, 157, 228, 0.904);
+}
+
+.tabla .gestio .titulo_tabla:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.tabla .gestio .subtitulos:hover {
+  background-color: rgb(255, 255, 255);
+}
