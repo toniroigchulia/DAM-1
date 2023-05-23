@@ -47,7 +47,7 @@ class Tree:
     
     def sort_key(self, item:os.DirEntry):
         
-        return "A" + item.name if item.is_file() else "B" + item.name
+        return "A" if item.is_file() else "B"
     
     
     def show(self):
@@ -59,7 +59,7 @@ class Tree:
 def main() -> None:
 
     tree_1 = Tree("C:\\Users\\Toni\\Documents\\1r DAM")
-    tree_1.set_max_depth(2)
+    tree_1.set_max_depth(1)
     tree_1.show()
 
 if __name__ == "__main__":
