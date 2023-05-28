@@ -10,7 +10,8 @@ public class Patient extends Persona{
 		
 	}
 	
-	void Load(String id) {
+	@Override
+	void load(String id) {
 		
 	}
 	

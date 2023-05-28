@@ -1,20 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    
     document.getElementById("botonEnviar").addEventListener("click", send);
-
-
 });
 
-function send(){
+let savedHashedPassword;
+
+function send() {
     var ehttp = new XMLHttpRequest();
     
-    ehttp.open("POST", "http://localhost:8080/EntornsBackend/LoginServlet", true);
+    ehttp.open("GET", "http://localhost:8080/EntornsBackend/Login?" + new URLSearchParams({
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value
+    }).toString(), true);
     ehttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    ehttp.send("");
+    ehttp.send();
     
     ehttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+            data = JSON.parse(this.response);
+            
+            if (data.session != null) {
+                window.location.replace("../Gestio/gestio.html");
+            }
         }
     };
-};    
+};
