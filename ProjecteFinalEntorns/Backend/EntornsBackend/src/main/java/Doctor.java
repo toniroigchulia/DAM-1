@@ -124,7 +124,6 @@ public class Doctor extends Persona {
 
 			if (rs.next()) {
 
-				System.out.println(rs.getString("name") + rs.getDate("last_log") + rs.getString("session"));
 				this.mail = rs.getString("mail");
 				this.name = rs.getString("name");
 				this.lastlog = rs.getDate("last_log");

@@ -28,7 +28,7 @@ public class ServePatients extends HttpServlet {
 	public ServePatients() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)

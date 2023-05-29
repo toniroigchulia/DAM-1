@@ -10,7 +10,7 @@ body{
 body .titulo{
     display: flex;
     padding: 1em;
-    margin-bottom: 3em;
+    margin-bottom: 1em;
     
     border-bottom: 5px solid black;
     
