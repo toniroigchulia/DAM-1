@@ -1,6 +1,13 @@
-
-
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -32,8 +39,38 @@ public class ServeMedicines extends HttpServlet {
 		Doctor doctor = new Doctor();
 		boolean isLogged = doctor.isLogged(email, session);
 		
-		System.out.println(isLogged);
+		List<Medicine> medicines = new ArrayList<>();
 		if (isLogged == true) {
+			try {
+				Connection conn = DataBaseConnection.getConnection();
+				Statement st = null;
+				st = conn.createStatement();
+				
+				String query = "SELECT id FROM medicine";
+				
+				ResultSet rs = st.executeQuery(query);
+				
+				while (rs.next()) {
+
+					Medicine medicine = new Medicine();
+					medicine.load(rs.getInt("id"));
+					medicines.add(medicine);
+				}
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			
+			ObjectMapper objectMapper = new ObjectMapper();
+	        String json = null;
+	        json = objectMapper.writeValueAsString(medicines);
+	        
+			response.setHeader("Access-Control-Allow-Origin", "*");
+			response.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
+			response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+			response.setStatus(HttpServletResponse.SC_OK);
+	        
+			response.getWriter().write(json);
 		}
 	}
 }
