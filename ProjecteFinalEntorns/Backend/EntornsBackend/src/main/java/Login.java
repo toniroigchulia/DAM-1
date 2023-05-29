@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
 /**
  * Servlet implementation class LoginServlet
  */
@@ -34,8 +33,6 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		String hashedPassword = Utils.hash(password);
-		
-		System.out.println("Email: " + email + " Password: " + hashedPassword);
 
 		Doctor doctor = new Doctor();
 		doctor.Login(email, hashedPassword);
@@ -51,13 +48,4 @@ public class Login extends HttpServlet {
         
 		response.getWriter().write(json);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-	};
 }

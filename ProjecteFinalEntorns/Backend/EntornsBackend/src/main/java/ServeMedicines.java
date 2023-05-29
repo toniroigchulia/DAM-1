@@ -26,15 +26,14 @@ public class ServeMedicines extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String email = request.getParameter("mail");
+		String session = request.getParameter("session");
+		
+		Doctor doctor = new Doctor();
+		boolean isLogged = doctor.isLogged(email, session);
+		
+		System.out.println(isLogged);
+		if (isLogged == true) {
+		}
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }

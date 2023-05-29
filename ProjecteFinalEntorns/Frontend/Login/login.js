@@ -19,7 +19,7 @@ function send() {
             
             var list = ["mail", "session", "name"];
             for (var index in list) {
-                sessionStorage.setItem(list[index], data.list[index]);
+                sessionStorage.setItem(list[index], data[list[index]]);
             };
             
             if (data.session != null) {

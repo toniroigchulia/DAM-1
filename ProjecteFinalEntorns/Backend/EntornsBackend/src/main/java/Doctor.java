@@ -2,6 +2,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
@@ -74,8 +76,39 @@ public class Doctor extends Persona {
 
 	boolean isLogged(String mail, String session) {
 		
-		boolean islogged = true;
-		return islogged;
+		boolean isMoreThan24Hours = false;
+		
+		try {
+			Connection conn;
+			conn = DataBaseConnection.getConnection();
+			
+			Statement st = null;
+			st = conn.createStatement();
+			
+			String query = "SELECT last_log, session FROM doctor WHERE session="+ "'"+session+"'";
+			
+			ResultSet rs = st.executeQuery(query);
+			
+			if (rs.getString("session") == session) {
+				
+				System.out.println("Sesion correcta");
+				
+				if (rs.next()) {
+					java.sql.Date sqlDate = rs.getDate("last_log");
+					
+					LocalDate currentDate = LocalDate.now();
+					LocalDate sqlLocalDate = sqlDate.toLocalDate();
+					
+					long dateDifferenceDays = ChronoUnit.DAYS.between(sqlLocalDate, currentDate);
+					
+					isMoreThan24Hours = dateDifferenceDays > 1;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return isMoreThan24Hours;
 	}
 
 	@Override
@@ -98,9 +131,7 @@ public class Doctor extends Persona {
 				this.name = rs.getString("name");
 				this.lastlog = rs.getDate("last_log");
 				this.session = rs.getString("session");
-				
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
