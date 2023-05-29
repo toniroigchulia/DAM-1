@@ -35,21 +35,20 @@ public class Login extends HttpServlet {
 		
 		String hashedPassword = Utils.hash(password);
 		
-		
 		System.out.println("Email: " + email + " Password: " + hashedPassword);
 
 		Doctor doctor = new Doctor();
 		doctor.Login(email, hashedPassword);
 
-
+		ObjectMapper objectMapper = new ObjectMapper();
+        String json = null;
+        json = objectMapper.writeValueAsString(doctor);
+        
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
 		response.setHeader("Access-Control-Allow-Headers", "Content-Type");
 		response.setStatus(HttpServletResponse.SC_OK);
-		
-		ObjectMapper objectMapper = new ObjectMapper();
-        String json = null;
-        json = objectMapper.writeValueAsString(doctor);
+        
 		response.getWriter().write(json);
 	}
 

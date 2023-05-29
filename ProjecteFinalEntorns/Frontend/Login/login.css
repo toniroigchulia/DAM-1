@@ -27,7 +27,6 @@ form{
     font-size: 0.85em;
 }
 
-
 .form-group label{
 	font-weight:bold;
 	display:inline-block;
@@ -52,7 +51,6 @@ form input{
 	border-bottom: 2px solid black;
 	
 }
-
 
 form button{
 	width:100%;

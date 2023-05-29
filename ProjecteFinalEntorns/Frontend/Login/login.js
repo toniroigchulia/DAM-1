@@ -3,8 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("botonEnviar").addEventListener("click", send);
 });
 
-let savedHashedPassword;
-
 function send() {
     var ehttp = new XMLHttpRequest();
     
@@ -19,9 +17,14 @@ function send() {
         if (this.readyState == 4 && this.status == 200) {
             data = JSON.parse(this.response);
             
+            var list = ["mail", "session", "name"];
+            for (var index in list) {
+                sessionStorage.setItem(list[index], data.list[index]);
+            };
+            
             if (data.session != null) {
                 window.location.replace("../Gestio/gestio.html");
-            }
-        }
+            };
+        };
     };
 };
