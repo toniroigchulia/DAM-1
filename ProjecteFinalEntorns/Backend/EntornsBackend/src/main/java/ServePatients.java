@@ -33,28 +33,35 @@ public class ServePatients extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// Guardamos en variables lo que recibimos del frontend
 		String email = request.getParameter("mail");
 		String session = request.getParameter("session");
-
+		
+		// Creamos un objeto doctor para comprovar si la session es valida
 		Doctor doctor = new Doctor();
 		boolean isLogged = doctor.isLogged(email, session);
-
+		
+		
+		// Creamos una lista de objetos pacientes para devovlerla al frontend
 		List<Patient> patients = new ArrayList<>();
 		if (isLogged == true) {
 			try {
+				// Coneccion a la base de datos
 				Connection conn = DataBaseConnection.getConnection();
 				Statement st = null;
 				st = conn.createStatement();
-
+				
+				// Query para obtener el mail de todos los pacientes
 				String query = "SELECT mail FROM patient";
 
 				ResultSet rs = st.executeQuery(query);
-
+				
+				// Por cada tupla que devuelve la query ejecutamos lo siguiente
 				while (rs.next()) {
-
+					
+					// Creamos un objeto de paciente usando el mail cargamos su informacion y lo añadimos a la lista
 					Patient patient = new Patient();
 					patient.load(rs.getString("mail"));
 					patients.add(patient);
@@ -63,16 +70,19 @@ public class ServePatients extends HttpServlet {
 				
 				e.printStackTrace();
 			}
-
+			
+			// Transformamos la lista a JSON pra devolverlo al frontend
 			ObjectMapper objectMapper = new ObjectMapper();
 			String json = null;
 			json = objectMapper.writeValueAsString(patients);
-
+			
+			// Añadimos permiso de CORS
 			response.setHeader("Access-Control-Allow-Origin", "*");
 			response.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
 			response.setHeader("Access-Control-Allow-Headers", "Content-Type");
 			response.setStatus(HttpServletResponse.SC_OK);
-
+			
+			// Devolvemos el json
 			response.getWriter().write(json);
 		}
 	}

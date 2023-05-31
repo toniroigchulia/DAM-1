@@ -1,10 +1,11 @@
-
+// Classe abstracta Persona
 public abstract class Persona {
 	
-
+	// Atributos
 	String name;
 	String mail;
 	
+	// Constructor vacio y con todos los atributos
 	Persona(){};
 	
 	Persona(String name, String mail){
@@ -14,8 +15,10 @@ public abstract class Persona {
 		
 	};
 	
+	// Declaramos metodo abstracto
 	abstract void load (String id);
 	
+	// Getters And Setters
 	public String getName() {
 		return name;
 	}

@@ -4,14 +4,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 
+// Classe xip
 public class Xip {
 	
+	// Atributos
 	int id;
 	String doctor_mail;
 	int id_medicine;
 	String id_patient;
 	Date date;
 	
+	// Constructor vacio y con todos los atributos
 	Xip () {}
 	
 	Xip (int id, int id_medicine, String id_patient, Date date, String doctor_mail) {
@@ -24,17 +27,20 @@ public class Xip {
 		
 	}
 	
-	
+	// Metodo para cargar en el objeto la informacion de la base de datos
 	void load(int id) {
 		
 		try {
+			// Conecion a la base de datos
 			Connection conn = DataBaseConnection.getConnection();
 			Statement st = null;
 			st = conn.createStatement();
 			
+			// Query para obtener todas las columnas del xip con la id correspondiente
 			String query = "SELECT * FROM xip WHERE id='" + id + "'";
 			ResultSet rs = st.executeQuery(query);
 			
+			// Si la query devuelve algo guardamos cada valor en su atributo correspondiente
 			if (rs.next()) {
 				
 				this.id = id;
@@ -49,6 +55,7 @@ public class Xip {
 		}
 	}
 	
+	// Getters And Setters
 	public int getId() {
 		return id;
 	}

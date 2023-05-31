@@ -28,19 +28,25 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// Guardamos lo que recibimos del frontend en sus variables correspondientes
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
+		// Hasheamos la contraseña para guardarla en la base de datos
 		String hashedPassword = Utils.hash(password);
-
+		
+		
+		// Hacemos el login usando el metodo del doctor
 		Doctor doctor = new Doctor();
 		doctor.Login(email, hashedPassword);
-
+		
+		// Convertimos el objeto del doctor a json
 		ObjectMapper objectMapper = new ObjectMapper();
         String json = null;
         json = objectMapper.writeValueAsString(doctor);
         
+        
+        // Damos permiso de CORS y mandamos el json al frontend
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
 		response.setHeader("Access-Control-Allow-Headers", "Content-Type");

@@ -32,26 +32,33 @@ public class ServeMedicines extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		// Guardamos en variables la informacion recivida del fronend
 		String email = request.getParameter("mail");
 		String session = request.getParameter("session");
 		
+		// Creamos un objecto doctor para comprobar si la sesion es valida
 		Doctor doctor = new Doctor();
 		boolean isLogged = doctor.isLogged(email, session);
 		
+		// Creamos una lista de objetos medicina para despues mandarla al frontend
 		List<Medicine> medicines = new ArrayList<>();
 		if (isLogged == true) {
 			try {
+				// Coneccion a la base de datos
 				Connection conn = DataBaseConnection.getConnection();
 				Statement st = null;
 				st = conn.createStatement();
 				
+				// Query para obtener todas las id de las medicinas
 				String query = "SELECT id FROM medicine";
 				
 				ResultSet rs = st.executeQuery(query);
 				
+				// Mientras haya mas tuplas ejecutamos lo siguiente
 				while (rs.next()) {
-
+					
+					// Creamos un objeto de medicina le cargamos la informacion deseada y lo guardamos en la lista
 					Medicine medicine = new Medicine();
 					medicine.load(rs.getInt("id"));
 					medicines.add(medicine);
@@ -61,15 +68,18 @@ public class ServeMedicines extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+			// Transformamos la lista de medicinas a json para poder acceder a su informacion en el frontend mas facilmente
 			ObjectMapper objectMapper = new ObjectMapper();
 	        String json = null;
 	        json = objectMapper.writeValueAsString(medicines);
 	        
+	        // Añadimos el Cors
 			response.setHeader("Access-Control-Allow-Origin", "*");
 			response.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
 			response.setHeader("Access-Control-Allow-Headers", "Content-Type");
 			response.setStatus(HttpServletResponse.SC_OK);
 	        
+			// Devolvemos al frontend el json
 			response.getWriter().write(json);
 		}
 	}
