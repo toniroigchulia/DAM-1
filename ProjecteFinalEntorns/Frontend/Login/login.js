@@ -13,9 +13,13 @@ function send() {
     ehttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     ehttp.send();
     
-    ehttp.onreadystatechange = function () {
+    ehttp.onreadystatechange = function () {      
         if (this.readyState == 4 && this.status == 200) {
             data = JSON.parse(this.response);
+            if (data.session == null) {
+                var notificacion = document.getElementById("notificacion");
+                notificacion.innerHTML = "Error de inicio de session.";
+            }
             
             var list = ["mail", "session", "name"];
             for (var index in list) {

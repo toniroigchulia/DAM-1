@@ -21,7 +21,7 @@ form{
 	border-radius:10px;
 	
 	margin-top: 3em;
-	margin-bottom: 4em;
+	margin-bottom: 2em;
 	margin-left: 1em;
 	margin-right: 1em;
 	  
@@ -80,4 +80,5 @@ form button:hover{
     margin-top: 2em;
     display: flex;
     justify-content: center; 
+    text-align: center;
 }

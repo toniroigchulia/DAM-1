@@ -27,12 +27,21 @@ function send() {
     }).toString());
     
     ehttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {      
-            if (this.response.status >= 500 && this.sresponse.status < 600) {
-                console.log('Internal Server Error');
-            } else {
-                console.log("Se ha insertado correctamente")
-            };
+        if (this.status >= 500 && this.status < 600) {
+            var notificacion = document.getElementById("notificacion");
+            
+            notificacion.style.color = "red"
+            notificacion.innerHTML = "Ha habido un problema comprueba que todos los campos sean correctos";
+        };
+        
+        if (this.readyState == 4 && this.status == 200) {  
+            var form = document.getElementById("form");
+            form.reset();
+        
+            var notificacion = document.getElementById("notificacion");
+            
+            notificacion.style.color = "green"
+            notificacion.innerHTML = "Se ha dado de alta correctamente";
         };    
     };
 };

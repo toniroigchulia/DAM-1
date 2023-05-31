@@ -66,3 +66,11 @@ form button{
 form button:hover{
 	cursor:pointer;
 }
+
+.notificacion{
+    margin-bottom: 2em;
+    display: flex;
+    justify-content: center; 
+    text-align: center;
+    color: red;
+}
