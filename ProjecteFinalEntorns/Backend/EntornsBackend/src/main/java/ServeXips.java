@@ -1,4 +1,5 @@
 import java.io.IOException;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -24,15 +25,23 @@ public class ServeXips extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String email = request.getParameter("mail");
+		String session = request.getParameter("session");
+		
+		String tabla = "";
+		
+		Doctor doctor = new Doctor();
+		boolean isLogged = doctor.isLogged(email, session);		
+		if (isLogged == true) {
+			doctor.loadReleaseList();
+			tabla = doctor.getTable();
+		}
+        
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
+		response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+		response.setStatus(HttpServletResponse.SC_OK);
+        
+		response.getWriter().write(tabla);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }

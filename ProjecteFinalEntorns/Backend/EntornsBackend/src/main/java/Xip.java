@@ -1,24 +1,91 @@
-import java.time.LocalDate;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
 
 public class Xip {
 	
 	int id;
-	Medicine medicine;
-	Patient patient;
-	LocalDate date;
+	String doctor_mail;
+	int id_medicine;
+	String id_patient;
+	Date date;
 	
 	Xip () {}
 	
-	Xip (int id, Medicine medicine, Patient patient, LocalDate date) {
+	Xip (int id, int id_medicine, String id_patient, Date date, String doctor_mail) {
 		
 		this.id = id;
-		this.medicine = medicine;
-		this.patient = patient;
+		this.id_medicine = id_medicine;
+		this.id_patient = id_patient;
 		this.date = date;
+		this.doctor_mail = doctor_mail;
 		
 	}
 	
+	
 	void load(int id) {
 		
+		try {
+			Connection conn = DataBaseConnection.getConnection();
+			Statement st = null;
+			st = conn.createStatement();
+			
+			String query = "SELECT * FROM xip WHERE id='" + id + "'";
+			ResultSet rs = st.executeQuery(query);
+			
+			if (rs.next()) {
+				
+				this.id = id;
+				this.doctor_mail = rs.getString("doctor_mail");
+				this.id_medicine = rs.getInt("id_medicine");
+				this.id_patient = rs.getString("id_patient");
+				this.date = rs.getDate("date");
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getDoctor_mail() {
+		return doctor_mail;
+	}
+
+	public void setDoctor_mail(String doctor_mail) {
+		this.doctor_mail = doctor_mail;
+	}
+
+	public int getId_medicine() {
+		return id_medicine;
+	}
+
+	public void setId_medicine(int id_medicine) {
+		this.id_medicine = id_medicine;
+	}
+
+	public String getId_patient() {
+		return id_patient;
+	}
+
+	public void setId_patient(String id_patient) {
+		this.id_patient = id_patient;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 }

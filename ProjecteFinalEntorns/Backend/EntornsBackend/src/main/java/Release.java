@@ -2,11 +2,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -59,7 +54,7 @@ public class Release extends HttpServlet {
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
 		response.setHeader("Access-Control-Allow-Headers", "Content-Type");
-				
+		
 		String email = request.getParameter("mail");
 		String session = request.getParameter("session");
 		String idPatient = request.getParameter("idPatient");

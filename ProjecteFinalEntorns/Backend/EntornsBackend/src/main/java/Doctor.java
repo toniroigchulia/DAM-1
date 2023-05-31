@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -15,7 +16,7 @@ public class Doctor extends Persona {
 	String pass;
 	Date lastlog;
 	String session;
-	ArrayList<Xip> releaseList;
+	List<Xip> releaseList;
 
 	Doctor() {
 	}
@@ -26,12 +27,6 @@ public class Doctor extends Persona {
 		this.pass = pass;
 		this.lastlog = lastlog;
 		this.session = session;
-
-	}
-
-	void setreleaseList(ArrayList<Xip> releaseList) {
-
-		this.releaseList = releaseList;
 
 	}
 
@@ -73,10 +68,11 @@ public class Doctor extends Persona {
 		}
 
 	}
+	
 
 	boolean isLogged(String mail, String session) {
 
-		boolean isMoreThan24Hours = false;
+		boolean isLessThan24Hours = false;
 
 		try {
 			Connection conn;
@@ -98,16 +94,21 @@ public class Doctor extends Persona {
 
 					long dateDifferenceDays = ChronoUnit.DAYS.between(sqlLocalDate, currentDate);
 
-					isMoreThan24Hours = dateDifferenceDays < 1;
+					isLessThan24Hours = dateDifferenceDays < 1;
 				}
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		return isMoreThan24Hours;
+		
+		if (isLessThan24Hours == true) {
+			this.load(mail);
+		}
+		
+		return isLessThan24Hours;
 	}
+	
 
 	@Override
 	void load(String id) {
@@ -123,7 +124,8 @@ public class Doctor extends Persona {
 			ResultSet rs = st.executeQuery(query);
 
 			if (rs.next()) {
-
+				
+				this.releaseList = new ArrayList<>();
 				this.mail = rs.getString("mail");
 				this.name = rs.getString("name");
 				this.lastlog = rs.getDate("last_log");
@@ -134,15 +136,49 @@ public class Doctor extends Persona {
 		}
 	}
 
-	void loadReleaseLit() {
-
+	void loadReleaseList() {
+		String mail = this.mail;
+		try {
+			Connection conn = DataBaseConnection.getConnection();
+			Statement st = null;
+			st = conn.createStatement();
+			
+			String query = "SELECT id FROM xip WHERE doctor_mail='" + mail +"' AND date >= CURDATE()"; 
+			ResultSet rs = st.executeQuery(query);
+			
+			while (rs.next()){
+				
+				Xip xip = new Xip();
+				xip.load(rs.getInt("id"));
+				this.releaseList.add(xip);
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
 	}
 
 	String getTable() {
+		List<Xip> releaseList = this.releaseList;
+		String tabla = "  <tr class=\"titulo_tabla\">\r\n"
+				+ "           <th colspan=\"4\">Altas del Doctor</th>\r\n"
+				+ "       </tr>\r\n"
+				+ "       <tr class=\"subtitulos\">\r\n"
+				+ "       <th class=\"paciente\">Paciente</td>\r\n"
+				+ "       <th class=\"numero_xip\">Numero Xip</td>\r\n"
+				+ "       <th class=\"medicamento\">Medicamento</td>\r\n"
+				+ "       <th class=\"fecha_caducidad\">Fecha Caducidad</td>";
+		
+		for (int i = 0; i < releaseList.size(); i++) {
+			tabla += "  <tr>\r\n"
+					+ "    <td>"+releaseList.get(i).getId_patient()+"</td>\r\n"
+					+ "    <td>"+releaseList.get(i).getId()+"</td>\r\n"
+					+ "    <td>"+releaseList.get(i).getId_medicine()+"</td>\r\n"
+					+ "    <td>"+releaseList.get(i).getDate()+"</td>\r\n"
+					+ "  </tr>";
+		}
 
-		String b = "asda";
-		return b;
-
+		return tabla;
 	}
 
 	@JsonIgnore
@@ -171,11 +207,11 @@ public class Doctor extends Persona {
 	}
 
 	@JsonIgnore
-	public ArrayList<Xip> getReleaseList() {
+	public List<Xip> getReleaseList() {
 		return releaseList;
 	}
 
-	public void setReleaseList(ArrayList<Xip> releaseList) {
+	public void setReleaseList(List<Xip> releaseList) {
 		this.releaseList = releaseList;
 	}
 

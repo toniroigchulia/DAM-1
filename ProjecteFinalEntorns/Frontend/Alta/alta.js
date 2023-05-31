@@ -27,8 +27,12 @@ function send() {
     }).toString());
     
     ehttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            console.log(this.response);
+        if (this.readyState == 4 && this.status == 200) {      
+            if (this.response.status >= 500 && this.sresponse.status < 600) {
+                console.log('Internal Server Error');
+            } else {
+                console.log("Se ha insertado correctamente")
+            };
         };    
     };
 };
@@ -50,12 +54,12 @@ function getPatients() {
             
             for (var i = 0; i < data.length; i++) {
                 
-                patientName = data[i].name;
+                patientMail = data[i].mail;
                 
                 var option = document.createElement("option");
 
-                option.text = patientName;
-                option.value = patientName;
+                option.text = patientMail;
+                option.value = patientMail;
 
                 patientSelect.appendChild(option);
             };

@@ -75,3 +75,9 @@ form button:hover{
     display: flex;
     justify-content: center;    
 }
+
+.notificacion{
+    margin-top: 2em;
+    display: flex;
+    justify-content: center; 
+}
