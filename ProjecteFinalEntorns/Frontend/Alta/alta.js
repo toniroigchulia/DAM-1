@@ -116,6 +116,9 @@ function getMedicines() {
                 
                 medicineName = data[i].name;
                 
+                // Guardamos la id en el session storage con la key de nombre
+                sessionStorage.setItem(data[i].name, data[i].id)
+                
                 var option = document.createElement("option");
 
                 option.text = medicineName;

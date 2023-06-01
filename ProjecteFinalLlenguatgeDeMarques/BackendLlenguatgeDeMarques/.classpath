@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-18">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/Toni/Documents/1r DAM/ProjecteFinalLlenguatgeDeMarques/Tomcat/apache-tomcat-10.1.5/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Toni/Documents/1r DAM/ProjecteFinalLlenguatgeDeMarques/BackendLlenguatgeDeMarques/lib/mysql-connector-j-8.0.31.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Toni/Documents/1r DAM/ProjecteFinalLlenguatgeDeMarques/BackendLlenguatgeDeMarques/lib/json-20230227.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

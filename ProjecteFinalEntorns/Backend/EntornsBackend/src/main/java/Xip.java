@@ -31,7 +31,7 @@ public class Xip {
 	void load(int id) {
 		
 		try {
-			// Conecion a la base de datos
+			// Coneccion a la base de datos
 			Connection conn = DataBaseConnection.getConnection();
 			Statement st = null;
 			st = conn.createStatement();

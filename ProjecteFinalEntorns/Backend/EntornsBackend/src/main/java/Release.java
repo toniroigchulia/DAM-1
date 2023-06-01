@@ -48,8 +48,7 @@ public class Release extends HttpServlet {
 		response.setHeader("Access-Control-Allow-Headers", "Content-Type");
 		response.setStatus(HttpServletResponse.SC_OK);
     }
-    
-    
+       
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
