@@ -25,7 +25,7 @@ function send() {
         mail: sessionStorage.getItem("mail"), 
         session: sessionStorage.getItem("session"), 
         idXip: document.getElementById("idxip").value, 
-        idMed: sessionStorage.getItem(document.getElementById("medicamentos").value), 
+        idMed: document.getElementById("medicamentos").value, 
         date: document.getElementById("dataLimite").value, 
         idPatient: document.getElementById("pacientes").value
     }).toString()); // El (+ new URLSearchParams) y (.toString(), true) sirve para poder escribir el contenido 
@@ -113,16 +113,10 @@ function getMedicines() {
             var medicineSelect = document.getElementById("medicamentos");
             
             for (var i = 0; i < data.length; i++) {
-                
-                medicineName = data[i].name;
-                
-                // Guardamos la id en el session storage con la key de nombre
-                sessionStorage.setItem(data[i].name, data[i].id)
-                
                 var option = document.createElement("option");
 
-                option.text = medicineName;
-                option.value = medicineName;
+                option.text = data[i].name;
+                option.value = data[i].id;
 
                 medicineSelect.appendChild(option);
             };

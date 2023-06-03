@@ -29,6 +29,10 @@ public class Register extends HttpServlet {
 		String pass = request.getParameter("pass");
 		String codeCountry = request.getParameter("codeCountry");
 		
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
+		response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+		
 		User persona = new User(user,mail,pass,codeCountry);
 		boolean resultat = persona.register();
 		response.getWriter().append(String.valueOf(resultat));
@@ -38,6 +42,11 @@ public class Register extends HttpServlet {
 	
 	//Retorna la llista de paisos necessari pel registre
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
+		response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+				
 		String json = Country.getList();
 		System.out.println(json);
 		response.getWriter().append(json);

@@ -4,31 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="login.js"></script>
-    <link rel="stylesheet" href="login.css" />
+    <script src="register.js"></script>
+    <link rel="stylesheet" href="register.css" />
     <link rel="stylesheet" href="../main.css" />
-    <title>Login</title>
+    <title>Registro</title>
 </head>
 <body>
     <div class="titulo">
-        Farmacia Entorns
+        Registro
     </div>
     <div class="formulario">
-        <div class="tituloformulario">
-            Inicio Session
-        </div>
-        <form>
+        <form id="form">
             <div class="inputs">
+                <div class="form-group">
+                    <label for="user">Nombre Usuario</label>
+                    <input class="form-control" type="string" name="usuario" id="user" placeholder="User Name">
+                </div>
                 <div class="form-group">
                     <label for="email">Correo Electronico</label>
                     <input class="form-control" type="string" name="email" id="email" placeholder="tuemail@mail.com">
                 </div>
                 <div class="form-group">
+                    <label for="pais">Pais</label>
+                    <select class="form-control" type="string" name="paises" id="paises">
+                    
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="contraseña">Contraseña</label>
                     <input class="form-control" type="password" name="contraseña" id="password" placeholder="*******">
                 </div>
+                <div class="form-group">
+                    <label for="contraseña">Confirmar Contraseña</label>
+                    <input class="form-control" type="password" name="confirmarContraseña" id="confirmPassword" placeholder="*******">
+                </div>
             </div>
-            <button type="button" id="botonEnviar">Enviar</button>
+            <div class="botones">
+                <button type="button" id="botonVolver">Volver</button>
+                <button type="button" id="botonEnviar">Enviar</button>
+            </div>
         </form>
         <div class="notificacion" id="notificacion">
             
