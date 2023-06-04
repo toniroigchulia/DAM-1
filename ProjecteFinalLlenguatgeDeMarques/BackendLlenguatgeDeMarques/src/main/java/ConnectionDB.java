@@ -194,6 +194,45 @@ public class ConnectionDB {
 		}
 	}
 	
+	public String getMissatges(User receptor, boolean enviados) {
+		String jsonString = null;
+		JSONArray ja = new JSONArray();;
+
+		try {
+			String query = "SELECT * FROM message WHERE desti='"+receptor.getMail()+"'";
+			if (!enviados) {
+				
+				query += " AND enviado=0";
+			} else {
+				
+				query += " OR origen='"+receptor.getMail()+"'";
+			}
+			query += ";";
+
+			
+			ResultSet rs = st.executeQuery(query);
+			
+			query = "Update message SET enviado=1 WHERE desti='"+receptor.getMail()+"'";
+			
+			Class.forName("org.json.JSONObject");
+			
+			while (rs.next()) {
+				JSONObject jsonObject = new JSONObject();
+                jsonObject.put("origen", rs.getString("origen"));
+                jsonObject.put("desti", rs.getString("desti"));
+                jsonObject.put("id", rs.getInt("id"));
+                jsonObject.put("text", rs.getString("text"));
+                ja.put(jsonObject);
+			}
+			st.executeUpdate(query);
+			jsonString = ja.toString();
+		} catch (Exception e) {
+			System.out.println("jeje");
+		}
+		
+		return jsonString;
+	}
+	
 	public void saveMessage(Missatge sms) {
 		String query = "INSERT INTO message (origen,desti,text) VALUES ('"+sms.getEmisor()+"','"+sms.getReceptor()+"','"+sms.getText()+"');";
 		try {

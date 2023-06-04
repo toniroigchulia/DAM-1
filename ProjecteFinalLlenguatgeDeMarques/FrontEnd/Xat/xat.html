@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="xat.js"></script>
+    <link rel="stylesheet" href="xat.css" />
+    <link rel="stylesheet" href="../main.css" />
+    <title>Chat</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="listaAmigos">
+            <div class="tuEmail" id="tuEmail">
+            </div>
+            <div id="listaAmigos">
+            </div>
+            <div class="notificacion" id="notificacion">
+                Error al añadir amigo
+            </div>
+            <div class="añadirAmigo">
+                <input type="text" id="añadirAmigo" placeholder="Añadir Amigo">
+                <div class="botones">
+                    <div class="botones">
+                        <button type="button" id="botonVolver">Volver</button>
+                        <button type="button" id="botonAñadir">Añadir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-container">
+            <form class="chatInput" id="msgForm">
+
+                <input class="texto" autocomplete="off" type="text" id="sms" placeholder="Escribe aquí">
+
+                <button class="boton" type="submit" id="sendSms">Enviar</button>
+
+            </form>
+            <div class="chat" id="chat">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

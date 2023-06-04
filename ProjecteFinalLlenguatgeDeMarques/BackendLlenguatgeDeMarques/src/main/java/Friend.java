@@ -53,6 +53,11 @@ public class Friend extends HttpServlet {
 		}else {
 			resposta = "3";
 		}
+		
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
+		response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+		
 		response.getWriter().append(resposta);
 	}
 	
@@ -65,6 +70,10 @@ public class Friend extends HttpServlet {
 		u.setSession(session);
 		
 		String resposta ="[]";
+		
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
+		response.setHeader("Access-Control-Allow-Headers", "Content-Type");
 		
 		if (u.isLogged()) {
 			resposta = u.getFriends();

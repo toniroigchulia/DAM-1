@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Funcion para mandar informacion al backend
 function send() {
-    var ehttp = new XMLHttpRequest();
+    let ehttp = new XMLHttpRequest();
     
     // Puerto metodo de envio y informacion que se manda al backend
     ehttp.open("GET", "http://localhost:8080/BackendLlenguatgeDeMarques/Login?" + new URLSearchParams({
@@ -24,10 +24,12 @@ function send() {
             if (this.response == "false") {
                 
                 // Indicamos al usuario que no se ha podido iniciar session
-                var notificacion = document.getElementById("notificacion");
+                let notificacion = document.getElementById("notificacion");
                 notificacion.innerHTML = "Error de inicio de session.";
             } else {
                 
+                sessionStorage.setItem("mail", document.getElementById("email").value);
+                sessionStorage.setItem("session", this.response);
                 window.location.replace("../Xat/xat.html");
             };
         };

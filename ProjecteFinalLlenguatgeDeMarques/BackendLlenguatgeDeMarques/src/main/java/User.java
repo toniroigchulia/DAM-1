@@ -98,6 +98,15 @@ public class User {
 		conDB.close();
 		return resposta;
 	}
+	
+	public String getMissatges(boolean enviados) {
+		String resposta = "[]";
+		ConnectionDB conDB = new ConnectionDB();
+		conDB.connectar();
+		resposta = conDB.getMissatges(this, enviados);
+		conDB.close();
+		return resposta;
+	}
 
 	//Setters i Getters
 	public String getUser() {

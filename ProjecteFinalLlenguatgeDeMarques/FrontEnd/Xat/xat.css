@@ -1,0 +1,153 @@
+* {
+
+    box-sizing: border-box;
+}
+
+.main {
+    height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    column-gap: 1em;
+    display: flex;
+    flex-direction: row;
+}
+
+.listaAmigos {
+    overflow: auto;
+    display: flex;
+    padding-top: 1em;
+    row-gap: 1em;
+    flex-direction: column;
+    flex: 1 1;
+    min-width: min-content;
+    background-color: #ffffff;
+    border-right: 3px solid black;
+
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column-reverse;
+    padding-top: 1em;
+    padding-right: 1em;
+    padding-bottom: 1em;
+    row-gap: 1.5em;
+    flex: 1 1 75%;
+}
+
+.amigo {
+    cursor: pointer;
+    border-bottom: 1px solid black;
+    padding: 0.5em 0.25em;
+}
+
+.amigo:hover {
+    background-color: #11111111;
+}
+
+.amigo.active {
+    background-color: rgb(0, 255, 145);
+}
+
+.chatInput {
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    border: 3px solid black;
+    width: 100%;
+    border-radius: 0.5em;
+}
+
+.texto {
+    margin: 0.1em;
+    flex: 1 1;
+    width: 100%;
+    padding: 10px;
+    border-radius: 0.5em;
+}
+
+.chatInput .boton {
+    flex: 0 0;
+    padding: 0 2em;
+    margin: 0.1em;
+    
+    display: flex;
+    align-items: center;
+    
+    column-gap: 1.5em;
+    border-radius: 0.25em;
+    background-color: black;
+    color: white
+}
+
+.añadirAmigo {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+}
+
+.añadirAmigo input {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.25em;
+}
+
+.botones {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1.5em;
+    justify-content: center;
+}
+
+.botones button {
+    border-radius: 0.25em;
+    background-color: black;
+    color: white
+}
+
+.notificacion {
+    text-align: center;
+    color: red;
+    display: none;
+}
+
+.chat {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.407);
+    row-gap: 1em;
+    flex: 1 1;
+    border-radius: 20px;
+    border: 3px solid black;
+    z-index: 1;
+}
+
+.chat::-webkit-scrollbar {
+    display: none;
+}
+
+.chat .propio {
+    margin: 1em;
+    margin-left: auto;
+    background-color: rgb(0, 255, 145);
+}
+
+.chat .externo {
+    margin: 1em;
+    margin-right: auto;
+    background-color: rgb(184, 184, 184);
+}
+
+.chat .mensage {
+    display: inline;
+    border: 2px solid #11111199;
+    border-radius: 0.5em;
+    padding: 0.3em;
+}
+
+.tuEmail {
+    color: green;
+    text-align: center;
+    padding: 0.3em;
+}
